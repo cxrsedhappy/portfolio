@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {Link} from "react-router-dom";
 
 export default function Main() {
   const [openSections, setOpenSections] = useState({
@@ -36,15 +37,15 @@ export default function Main() {
 
         <div className="flex justify-center sm:justify-end text-2xl gap-8 text-gray-300">
 
-          <a className="group" target="_blank" href="#">
+          <Link className="group" target="_blank" to="#">
             <span className="mx-1 py-1 hover:text-white text-gray-300 transition-colors duration-300">Blog</span>
             <div className="bg-white h-px w-0 group-hover:w-full transition-all duration-500 hidden sm:block"></div>
-          </a>
+          </Link>
 
-          <a className="group" href="/contact">
+          <Link className="group" to="/contact">
             <span className="mx-1 hover:text-white text-gray-300 transition-colors duration-300">Contact</span>
             <div className="bg-white h-px w-0 group-hover:w-full transition-all duration-500 hidden sm:block"></div>
-          </a>
+          </Link>
 
         </div>
 
@@ -71,15 +72,15 @@ export default function Main() {
           </h3>
           <div className={`overflow-hidden transition-all duration-800 ${openSections.aboutMe ? 'max-h-96' : 'max-h-0'}`}>
             <div className="pb-4 pt-0 space-y-2">
-              <p>I'm a passionate developer with a love for creating elegant solutions to complex problems. Currently focused on web development and exploring new technologies.</p>
+              <p>I'm a passionate developer with a love for creating elegant solutions to complex problems. Currently focused on fullstack development and exploring new technologies.</p>
               <p>Check out my work on:
-                <a
+                <Link
                   target="_blank"
                   className="ml-1 text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                  href="https://github.com/cxrsedhappy"
+                  to="https://github.com/cxrsedhappy"
                 >
                   GitHub
-                </a>
+                </Link>
               </p>
             </div>
           </div>
@@ -330,30 +331,21 @@ export default function Main() {
           <div
               className={`overflow-hidden transition-all duration-800 ${openSections.hobbies ? 'max-h-96' : 'max-h-0'}`}>
             <div className="pb-4 pt-0 space-y-2">
-              <p>🎮 Gaming - Both competitive and story-driven games</p>
-              <p>📚 Reading - Science fiction and technical books</p>
-              <p>🚶‍♂️ Hiking - Exploring nature whenever possible</p>
-              <p>🎧 Music Production - Creating electronic music in my spare time</p>
-              <p>🧩 Problem Solving - Puzzles, chess, and programming challenges</p>
+              <p>🚶 Gym - Exploring my possibilities</p>
+              <p>📚 Reading - Business and technical books</p>
+              <p>🎧 Programming - Backend, DeepML, DevOps, Cheats. I love all of it</p>
+              <p>🧩 Tactical games - Chess, Go are my passion</p>
+              <p>🎮 Gaming - Competitive and team oriented games</p>
             </div>
           </div>
         </div>
 
         <div className="flex gap-6 justify-center pt-6">
-          <a target="_blank" href="#" rel="noopener noreferrer">
-            <svg width="50" height="50" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                  d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"
-                  fill="#ffffff"/>
+          <Link target="_blank" to="https://t.me/daixe" rel="noopener noreferrer">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.64 8.8C16.49 10.38 15.84 14.22 15.51 15.99C15.37 16.74 15.09 16.99 14.83 17.02C14.25 17.07 13.81 16.64 13.25 16.27C12.37 15.69 11.87 15.33 11.02 14.77C10.03 14.12 10.67 13.76 11.24 13.18C11.39 13.03 13.95 10.7 14 10.49C14.0069 10.4582 14.006 10.4252 13.9973 10.3938C13.9886 10.3624 13.9724 10.3337 13.95 10.31C13.89 10.26 13.81 10.28 13.74 10.29C13.65 10.31 12.25 11.24 9.52 13.08C9.12 13.35 8.76 13.49 8.44 13.48C8.08 13.47 7.4 13.28 6.89 13.11C6.26 12.91 5.77 12.8 5.81 12.45C5.83 12.27 6.08 12.09 6.55 11.9C9.47 10.63 11.41 9.79 12.38 9.39C15.16 8.23 15.73 8.03 16.11 8.03C16.19 8.03 16.38 8.05 16.5 8.15C16.61 8.25 16.63 8.36 16.64 8.43C16.63 8.49 16.65 8.66 16.64 8.8Z" fill="#ffffff"/>
             </svg>
-          </a>
-          <a target="_blank" href="https://github.com/cxrsedhappy" rel="noopener noreferrer">
-            <svg width="50" height="50" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M48.854 0C21.839 0 0 22 0 49.217C0 70.973 13.993 89.389 33.405 95.907C35.832 96.399 36.721 94.829 36.721 93.486C36.721 92.143 36.721 89.001 36.721 84.747C23.12 87.659 20.234 78.13 20.234 78.13C18.041 72.462 14.822 70.892 14.822 70.892C10.382 67.866 15.135 67.98 15.135 67.98C20.002 68.359 22.58 73.113 22.58 73.113C26.908 80.608 33.976 78.246 36.836 77.018C37.328 73.861 38.621 71.613 40.027 70.277C29.15 68.941 17.724 64.801 17.724 46.106C17.724 40.77 19.631 36.363 22.695 32.898C22.089 31.67 20.42 26.703 23.066 20.053C23.066 20.053 27.131 18.71 36.721 24.958C40.67 23.843 44.969 23.285 49.268 23.285C53.566 23.285 57.865 23.843 61.814 24.958C71.404 18.709 75.469 20.053 75.469 20.053C78.115 26.703 76.446 31.67 75.84 32.898C78.904 36.363 80.811 40.77 80.811 46.106C80.811 64.915 69.385 68.826 58.508 70.162C60.263 71.727 61.929 74.857 61.929 79.709C61.929 86.764 61.929 91.683 61.929 93.485C61.929 94.829 62.704 96.399 65.246 95.907C84.659 89.389 98.651 71.087 98.651 49.217C98.651 22 76.813 0 48.854 0Z"
-                    fill="#ffffff"/>
-            </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </main>

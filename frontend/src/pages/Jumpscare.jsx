@@ -2,6 +2,7 @@ import { useState } from 'react';
 import screamSound from '../assets/sonic-exe.mp3';
 import eyes from '../assets/eyes.png';
 
+
 export default function AdminLogin() {
   const [isScaring, setIsScaring] = useState(false);
   const [isDarkening, setIsDarkening] = useState(false);

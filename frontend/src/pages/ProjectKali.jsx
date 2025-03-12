@@ -2,6 +2,8 @@ import { useState } from 'react';
 import login from '../assets/kali/img_0.png';
 import table from '../assets/kali/img_1.png';
 import generation from '../assets/kali/img_2.png';
+import {Link} from "react-router-dom";
+
 
 export default function ProjectKali() {
   const [openSections, setOpenSections] = useState({
@@ -23,11 +25,11 @@ export default function ProjectKali() {
     <div className="flex flex-col min-h-screen">
       {/* Navigation Header */}
       <header className="p-4 flex items-center border-b border-gray-800">
-        <a href="/" className="text-gray-300 hover:text-white transition-colors duration-300 mr-4">
+        <Link to="/" className="text-gray-300 hover:text-white transition-colors duration-300 mr-4">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-        </a>
+        </Link>
         <h1 className="text-2xl">Kali CRM</h1>
       </header>
 
@@ -173,7 +175,7 @@ export default function ProjectKali() {
               className={`px-4 py-3 text-sm transition-all ${activeScreen === 'dashboard' ? 'border-b-2 border-blue-400 text-blue-400' : 'text-gray-400 hover:text-white'}`}
               onClick={() => setActiveScreen('dashboard')}
             >
-              Dashboard
+              Login
             </button>
             <button
               className={`px-4 py-3 text-sm transition-all ${activeScreen === 'subscriptions' ? 'border-b-2 border-blue-400 text-blue-400' : 'text-gray-400 hover:text-white'}`}
@@ -185,7 +187,7 @@ export default function ProjectKali() {
               className={`px-4 py-3 text-sm transition-all ${activeScreen === 'analytics' ? 'border-b-2 border-blue-400 text-blue-400' : 'text-gray-400 hover:text-white'}`}
               onClick={() => setActiveScreen('analytics')}
             >
-              Analytics
+              Keys generation
             </button>
           </div>
 
@@ -200,13 +202,13 @@ export default function ProjectKali() {
 
               {activeScreen === 'subscriptions' && (
                   <div className="mockup-content">
-                    <img src={table} alt="Dashboard" className="w-full"/>
+                    <img src={table} alt="Subscriptions" className="w-full"/>
                   </div>
               )}
 
               {activeScreen === 'analytics' && (
                   <div className="mockup-content">
-                    <img src={generation} alt="Dashboard" className="w-full"/>
+                    <img src={generation} alt="Generations" className="w-full"/>
                   </div>
               )}
             </div>
