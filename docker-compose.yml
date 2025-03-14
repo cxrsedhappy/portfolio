@@ -2,15 +2,20 @@ version: '3.8'
 
 services:
   frontend:
+    container_name: app-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: my-portfolio
     ports:
       - "80:80"
+      - "443:443"
     restart: unless-stopped
     networks:
       - frontend-network
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
 
 networks:
   frontend-network:
