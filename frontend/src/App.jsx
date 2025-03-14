@@ -16,6 +16,7 @@ export default function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
             <motion.div
+              className={"flex flex-row"}
               initial={{ opacity: 0, filter: "brightness(1)" }}
               animate={{ opacity: 1, filter: "brightness(1)" }}
               exit={{ opacity: 0, filter: "brightness(0.5)" }}
