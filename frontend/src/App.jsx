@@ -1,11 +1,13 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+
 import Main from "./pages/Main.jsx";
 import Jumpscare from "./pages/Jumpscare.jsx";
 import ProjectKali from "./pages/ProjectKali.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import './App.css'
 import Contact from "./pages/Contacts.jsx";
+
+import './App.css'
 
 export default function App() {
   const location = useLocation();
@@ -16,7 +18,6 @@ export default function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
             <motion.div
-              className={"flex flex-row"}
               initial={{ opacity: 0, filter: "brightness(1)" }}
               animate={{ opacity: 1, filter: "brightness(1)" }}
               exit={{ opacity: 0, filter: "brightness(0.5)" }}

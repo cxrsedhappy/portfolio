@@ -1,12 +1,22 @@
 version: '3.8'
 
 services:
+  backend:
+    container_name: app-backend
+    build: ./backend
+    ports:
+      - "8000:8000"
+
   frontend:
     container_name: app-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      - REACT_APP_API_URL = "https://backend:8000/api"
+    depends_on:
+      - backend
     networks:
       - app-network
 

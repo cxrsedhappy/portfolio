@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -33,11 +36,22 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
-    alert('Message sent! I will get back to you soon.');
+
+    try {
+      const url = import.meta.env.REACT_APP_API_URL || `${window.location.protocol}//${window.location.hostname}:8000/api`;
+      await axios.post(`${url}/contact`, formData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    } catch (e) {
+      alert("Something went wrong: " + e)
+    } finally {
+      console.log("I'm fine")
+    }
+
     setFormData({
       name: '',
       email: '',
