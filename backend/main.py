@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+
+from models import ContactModel
 
 app = FastAPI(title='Stanislaw API', summary='', description='', version='0.0.1')
 
@@ -19,12 +20,7 @@ app.add_middleware(
 )
 
 
-class Contact(BaseModel):
-    name: str
-    email: str
-    subject: str
-    message: str
-
 @app.post('/api/contact')
-async def contact(form: Contact):
+async def contact(form: ContactModel):
     return {f'{form.name}': 'Hi mum!'}
+

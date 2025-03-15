@@ -1,22 +1,32 @@
+version: '3.8'
+
 services:
   frontend:
     build: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+    container_name: frontend
     networks:
-      - portfolio-network
+      - app-network
 
   backend:
     build: ./backend
+    container_name: backend
     environment:
-      - ENVIRONMENT=production
-    expose:
-      - "8000"
+      - DATABASE_URL=postgresql://user:password@postgres:5432/dbname
     networks:
-      - portfolio-network
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - app-network
+
 
 networks:
-  portfolio-network:
+  app-network:
     driver: bridge
