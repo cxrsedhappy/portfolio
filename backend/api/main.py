@@ -4,7 +4,13 @@ from pydantic import BaseModel
 
 app = FastAPI(title='Stanislaw API', summary='', description='', version='0.0.1')
 
-origins = ["*"]
+origins = [
+    "https://spashkov.ru",
+    "http://spashkov.ru",
+    "https://194.87.209.140/",
+    "http://194.87.209.140/",
+    "*"
+]
 
 app.add_middleware(
     CORSMiddleware,
