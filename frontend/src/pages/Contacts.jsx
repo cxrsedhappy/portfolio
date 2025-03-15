@@ -40,17 +40,16 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      const url = import.meta.env.REACT_APP_API_URL || `${window.location.protocol}//${window.location.hostname}:8000/api`;
+      const url = import.meta.env.DEV ? 'http://localhost:8000/api' : '/api';
       await axios.post(`${url}/contact`, formData, {
         headers: {
           'Content-Type': 'application/json'
         }
-      })
+      });
     } catch (e) {
-      alert("Something went wrong: " + e)
+      console.error(e);
+      alert("Ошибка отправки: " + e.message);
     } finally {
-      console.log("I'm fine")
-    }
 
     setFormData({
       name: '',
@@ -58,6 +57,8 @@ export default function Contact() {
       subject: '',
       message: ''
     });
+
+    }
   };
 
   return (

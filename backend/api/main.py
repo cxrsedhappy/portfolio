@@ -5,11 +5,9 @@ from pydantic import BaseModel
 app = FastAPI(title='Stanislaw API', summary='', description='', version='0.0.1')
 
 origins = [
-    "http://spashkov.ru",
-    "http://www.spashkov.ru",
-    "http://194.87.209.140",
-    "http://localhost",
-    "*"
+    "http://localhost:3000",   # for local
+    "http://spashkov.ru",      # for production
+    "https://spashkov.ru"
 ]
 
 app.add_middleware(
