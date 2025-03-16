@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useRef, useState} from 'react';
 import {Link} from "react-router-dom";
 
 export default function Main() {
@@ -9,6 +9,12 @@ export default function Main() {
     computer: false,
     hobbies: false
   });
+
+  const aboutMe = useRef(null);
+  const skills = useRef(null);
+  const projects = useRef(null);
+  const computer = useRef(null);
+  const hobbies = useRef(null);
 
   const PC_HOST = "DESKTOP-MAO3BTC"
   const ME = "stanislaw"
@@ -29,13 +35,13 @@ export default function Main() {
 
   return (
     <main className="m-auto w-full max-w-[700px] mt-14">
-      <div className="px-4 sm:px-0 space-y-4">
+      <div className="m-auto px-4 sm:px-0 space-y-4">
 
-        <h1 className="text-center text-3xl sm:text-5xl">
+        <h1 className="text-center text-3xl sm:text-5xl fonts">
           Hi<span className="animate-waving-hand inline-block mx-1">👋</span>, I'm Stanislaw.
         </h1>
 
-        <div className="flex justify-center sm:justify-end text-2xl gap-8 text-gray-300">
+        <div className="flex justify-center sm:justify-end text-xl sm:text-2xl gap-8 text-gray-300">
 
           <Link className="group" target="_blank" to="#">
             <span className="mx-1 py-1 hover:text-white text-gray-300 transition-colors duration-300">Blog</span>
@@ -70,14 +76,19 @@ export default function Main() {
               </svg>
             </button>
           </h3>
-          <div className={`overflow-hidden transition-all duration-800 ${openSections.aboutMe ? 'max-h-96' : 'max-h-0'}`}>
+          <div
+              className={`overflow-hidden duration-800 ${openSections.aboutMe ? '' : 'max-h-0'}`}
+              style={{maxHeight: openSections.aboutMe ? aboutMe.current?.scrollHeight : '0'}}
+              ref={aboutMe}
+          >
             <div className="pb-4 pt-0 space-y-2">
-              <p>I'm a passionate developer with a love for creating elegant solutions to complex problems. Currently focused on fullstack development and exploring new technologies.</p>
+              <p>I'm a passionate developer with a love for creating elegant solutions to complex problems. Currently
+                focused on fullstack/production development and exploring new technologies.</p>
               <p>Check out my work on:
                 <Link
-                  target="_blank"
-                  className="ml-1 text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                  to="https://github.com/cxrsedhappy"
+                    target="_blank"
+                    className="ml-1 text-blue-400 hover:text-blue-300 transition-colors duration-300"
+                    to="https://github.com/cxrsedhappy"
                 >
                   GitHub
                 </Link>
@@ -107,7 +118,11 @@ export default function Main() {
               </svg>
             </button>
           </h3>
-          <div className={`overflow-hidden transition-all duration-800 ${openSections.skills ? 'max-h-dvh' : 'max-h-0'}`}>
+          <div
+              className={`overflow-hidden duration-800 ${openSections.skills ? '' : 'max-h-0'}`}
+              style={{ maxHeight: openSections.skills ? skills.current?.scrollHeight : '0' }}
+              ref={skills}
+          >
             <div className="pb-4 pt-0">
               <div className="terminal">
                 <div className="terminal-header">
@@ -133,7 +148,7 @@ export default function Main() {
                     <span className="prompt">{ME}@arch:~$</span>
                     <span className="command"> cat skills/frontend/*</span>
                     <div className="mt-2">
-                      <span className="output-line">React, TypeScript, TailwindCSS, JavaScript, HTML, CSS</span>
+                      <span className="output-line">React, TailwindCSS, JavaScript, HTML, CSS</span>
                     </div>
                   </div>
 
@@ -141,7 +156,7 @@ export default function Main() {
                     <span className="prompt">{ME}@arch:~$</span>
                     <span className="command"> cat skills/backend/*</span>
                     <div className="mt-2">
-                      <span className="output-line">Node.js, Express, MongoDB, PostgreSQL, REST API</span>
+                      <span className="output-line">FastAPI, PostgreSQL, SQLAlchemy, REST API</span>
                     </div>
                   </div>
 
@@ -149,7 +164,7 @@ export default function Main() {
                     <span className="prompt">{ME}@arch:~$</span>
                     <span className="command"> ls -la skills/tools</span>
                     <div className="mt-2">
-                      {["Git", "Docker"].map((tool) =>
+                      {["Git", "Docker", "Jenkins"].map((tool) =>
                         <span className="output-line">-rwxr-xr-x 1 {ME} users 1.7K <span className="arch-blue">{tool}</span></span>
                       )}
                     </div>
@@ -207,20 +222,29 @@ export default function Main() {
               </svg>
             </button>
           </h3>
-          <div className={`overflow-hidden transition-all duration-800 ${openSections.projects ? 'max-h-96' : 'max-h-0'}`}>
+          <div
+              className={`overflow-hidden duration-800 ${openSections.projects ? '' : 'max-h-0'}`}
+              style={{maxHeight: openSections.projects ? projects.current?.scrollHeight : '0'}}
+              ref={projects}
+          >
             <div className="pb-4 pt-0 space-y-4">
               <div>
                 <h4 className="font-medium text-blue-400">Personal Portfolio</h4>
                 <p className="text-sm text-gray-300">
-                  A <a href={'https://github.com/cxrsedhappy/portfolio'} className="text-blue-400 hover:underline" rel="noopener noreferrer">responsive portfolio</a> website built with React and TailwindCSS.</p>
+                  A responsive <a href={'https://github.com/cxrsedhappy/portfolio'} target="_blank"
+                                  className="text-blue-400 hover:underline"
+                                  rel="noopener noreferrer">portfolio</a> website built with React and TailwindCSS.</p>
               </div>
               <div>
                 <h4 className="font-medium text-blue-400">CRM service</h4>
-                <p className="text-sm text-gray-300">A <a href="/kali" className="text-blue-400 hover:underline">full-stack application</a> for managing licenses using React, FastAPI and PostgreSQL.</p>
+                <p className="text-sm text-gray-300">A <Link to="/kali" className="text-blue-400 hover:underline">full-stack
+                  application</Link> for managing licenses using React, FastAPI and PostgreSQL.</p>
               </div>
               <div>
-                <h4 className="font-medium text-blue-400">Weather App</h4>
-                <p className="text-sm text-gray-300">A weather forecasting app built with React that uses OpenWeatherMap API.</p>
+                <h4 className="font-medium text-blue-400">Small project across IT</h4>
+                <p className="text-sm text-gray-300">Fullstack services, Deep Machine Learning, DevOps etc. Check them out
+                  on <a href="https://github.com/cxrsedhappy" target="_blank" className="text-blue-400 hover:underline"
+                        rel="noopener noreferrer">GitHub</a>. </p>
               </div>
             </div>
           </div>
@@ -230,8 +254,8 @@ export default function Main() {
         <div className="border-b border-gray-400">
           <h3 className="flex">
             <button
-              type="button"
-              className="flex flex-1 items-center justify-between py-4 text-sm transition-all hover:underline text-left w-full"
+                type="button"
+                className="flex flex-1 items-center justify-between py-4 text-sm transition-all hover:underline text-left w-full"
               onClick={() => toggleSection('computer')}
             >
               My Computer Setup
@@ -247,7 +271,11 @@ export default function Main() {
               </svg>
             </button>
           </h3>
-          <div className={`overflow-hidden transition-all duration-800 ${openSections.computer ? 'max-h-dvh' : 'max-h-0'}`}>
+          <div
+              className={`overflow-hidden duration-800 ${openSections.computer ? '' : 'max-h-0'}`}
+              style={{maxHeight: openSections.computer ? computer.current?.scrollHeight : '0'}}
+              ref={computer}
+          >
             <div className="pb-4 pt-0">
               <div className="terminal">
                 <div className="terminal-header">
@@ -257,7 +285,7 @@ export default function Main() {
                     <div className="terminal-button terminal-maximize"></div>
                   </div>
                   <div className="terminal-title">neofetch</div>
-                  <div style={{ width: "40px" }}></div>
+                  <div style={{width: "40px"}}></div>
                 </div>
                 <div>
                   <div className="flex sm:flex-row flex-col mt-2">
@@ -276,10 +304,10 @@ export default function Main() {
                     </div>
                     <div>
                       {terminalData.map((data, index) => (
-                        <div key={index} className="arch-info-row">
-                          <span className="arch-info-label">{Object.keys(data)[0]}:</span>
-                          <span className="output-line">{data[Object.keys(data)[0]]}</span>
-                        </div>
+                          <div key={index} className="arch-info-row">
+                            <span className="arch-info-label">{Object.keys(data)[0]}:</span>
+                            <span className="output-line">{data[Object.keys(data)[0]]}</span>
+                          </div>
                       ))}
                       <div className="mt-2">
                         <div className="color-blocks-big">
@@ -330,11 +358,14 @@ export default function Main() {
             </button>
           </h3>
           <div
-              className={`overflow-hidden transition-all duration-800 ${openSections.hobbies ? 'max-h-96' : 'max-h-0'}`}>
+              className={`overflow-hidden duration-800 ${openSections.hobbies ? '' : 'max-h-0'}`}
+              style={{maxHeight: openSections.hobbies ? hobbies.current?.scrollHeight : '0'}}
+              ref={hobbies}
+          >
             <div className="pb-4 pt-0 space-y-2">
               <p>🚶 Gym - Exploring my possibilities</p>
               <p>📚 Reading - Business and technical books</p>
-              <p>🎧 Programming - Backend, DeepML, DevOps, Cheats. I love all of it</p>
+              <p>🎧 Programming - Fullstack, DeepML, DevOps, Cheats. I love everything</p>
               <p>🧩 Tactical games - Chess, Go are my passion</p>
               <p>🎮 Gaming - Competitive and team oriented games</p>
             </div>

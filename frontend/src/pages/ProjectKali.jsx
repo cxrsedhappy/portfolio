@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useRef, useState} from 'react';
 import login from '../assets/kali/img_0.png';
 import table from '../assets/kali/img_1.png';
 import generation from '../assets/kali/img_2.png';
@@ -11,6 +11,10 @@ export default function ProjectKali() {
     features: false,
     tech: false
   });
+
+  const overview = useRef();
+  const features = useRef();
+  const tech = useRef();
 
   const [activeScreen, setActiveScreen] = useState('dashboard');
 
@@ -64,7 +68,11 @@ export default function ProjectKali() {
                   </svg>
                 </button>
               </h3>
-              <div className={`overflow-hidden transition-all duration-800 ${openSections.overview ? 'max-h-96' : 'max-h-0'}`}>
+              <div
+                  className={`overflow-hidden duration-800 ${openSections.overview ? '' : 'max-h-0'}`}
+                  style={{maxHeight: openSections.overview ? overview.current?.scrollHeight : '0'}}
+                  ref={overview}
+              >
                 <div className="pb-4 pt-0 space-y-2">
                   <p>Kali CRM is a complete solution for software companies to manage subscription-based products.</p>
                 </div>
@@ -73,7 +81,7 @@ export default function ProjectKali() {
 
             {/* Features Section */}
             <div className="border-b border-gray-700">
-              <h3 className="flex">
+            <h3 className="flex">
                 <button
                   type="button"
                   className="flex flex-1 items-center justify-between py-4 text-sm transition-all hover:underline text-left w-full"
@@ -92,7 +100,11 @@ export default function ProjectKali() {
                   </svg>
                 </button>
               </h3>
-              <div className={`overflow-hidden transition-all duration-800 ${openSections.features ? 'max-h-96' : 'max-h-0'}`}>
+              <div
+                  className={`overflow-hidden duration-800 ${openSections.features ? '' : 'max-h-0'}`}
+                  style={{maxHeight: openSections.features ? features.current?.scrollHeight : '0'}}
+                  ref={features}
+              >
                 <div className="pb-4 pt-0">
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -101,11 +113,15 @@ export default function ProjectKali() {
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-blue-400 rounded-full mt-1.5 mr-2"></div>
-                      <span>Analytics Dashboard</span>
+                      <span>API support for external software</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-blue-400 rounded-full mt-1.5 mr-2"></div>
-                      <span>Automated Billing</span>
+                      <span>Daily database backups</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full mt-1.5 mr-2"></div>
+                      <span>Keys generation</span>
                     </li>
                   </ul>
                 </div>
@@ -116,8 +132,8 @@ export default function ProjectKali() {
             <div className="border-b border-gray-700">
               <h3 className="flex">
                 <button
-                  type="button"
-                  className="flex flex-1 items-center justify-between py-4 text-sm transition-all hover:underline text-left w-full"
+                    type="button"
+                    className="flex flex-1 items-center justify-between py-4 text-sm transition-all hover:underline text-left w-full"
                   onClick={() => toggleSection('tech')}
                 >
                   Technology Stack
@@ -133,7 +149,11 @@ export default function ProjectKali() {
                   </svg>
                 </button>
               </h3>
-              <div className={`overflow-hidden transition-all duration-800 ${openSections.tech ? 'max-h-96' : 'max-h-0'}`}>
+              <div
+                  className={`overflow-hidden duration-800 ${openSections.tech ? '' : 'max-h-0'}`}
+                  style={{maxHeight: openSections.tech ? tech.current?.scrollHeight : '0'}}
+                  ref={tech}
+              >
                 <div className="pb-4 pt-0 grid grid-cols-2 gap-4">
                   <div>
                     <h4 className="font-medium text-blue-400 mb-2">Frontend</h4>

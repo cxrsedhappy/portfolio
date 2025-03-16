@@ -13,7 +13,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col max-height bg-black text-white fonts">
+    <div className="flex flex-col bg-black text-white m-auto">
       <AnimatePresence mode='wait'>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
@@ -63,7 +63,7 @@ export default function App() {
           }/>
 
           <Route path="*" element={
-            <div className="flex flex-1 items-center justify-center">
+            <div className="flex flex-1 items-center justify-center mt-24">
               <motion.div
                   className={'mt-12'}
                 initial={{ opacity: 0 }}
