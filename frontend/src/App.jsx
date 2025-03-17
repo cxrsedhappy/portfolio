@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound.jsx";
 import Contact from "./pages/Contacts.jsx";
 
 import './App.css'
+import Blog from "./pages/Blog.jsx";
 
 export default function App() {
   const location = useLocation();
@@ -39,6 +40,20 @@ export default function App() {
               </motion.div>
             </div>
           }/>
+
+          <Route path="/blog" element={
+            <div className="flex flex-1 items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Blog />
+              </motion.div>
+            </div>
+          }/>
+
 
           <Route path="/kali" element={
             <motion.div

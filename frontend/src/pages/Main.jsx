@@ -1,5 +1,6 @@
 import {useRef, useState} from 'react';
 import {Link} from "react-router-dom";
+import Terminal from "../components/Terminal.jsx";
 
 export default function Main() {
   const [openSections, setOpenSections] = useState({
@@ -57,7 +58,7 @@ export default function Main() {
 
         <div className="flex justify-center sm:justify-end text-xl sm:text-2xl gap-8 text-gray-300">
 
-          <Link className="group" target="_blank" to="#">
+          <Link className="group" to="/blog">
             <span className="mx-1 py-1 hover:text-white text-gray-300 transition-colors duration-300">Blog</span>
             <div className="bg-white h-px w-0 group-hover:w-full transition-all duration-500 hidden sm:block"></div>
           </Link>
@@ -138,16 +139,7 @@ export default function Main() {
               ref={skills}
           >
             <div className="pb-4 pt-0">
-              <div className="terminal">
-                <div className="terminal-header">
-                  <div className="terminal-buttons">
-                    <div className="terminal-button terminal-close"></div>
-                    <div className="terminal-button terminal-minimize"></div>
-                    <div className="terminal-button terminal-maximize"></div>
-                  </div>
-                  <div className="terminal-title">toggle.sh</div>
-                  <div style={{width: "40px"}}></div>
-                </div>
+              <Terminal title={'toggle.sh'}>
                 <div>
                   <span className="prompt">{PC_HOST}@arch:~$</span>
                   <span className="command"> ls -la skills/</span>
@@ -156,7 +148,8 @@ export default function Main() {
                     {["frontend", "backend", "devops", "tools", "other"].map((dir) =>
                         <span
                             className="output-line">drwxr-xr-x 2 {ME} {new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}
-                          <span className="highlight">{dir}/</span></span>
+                          <span className="highlight"> {dir}/</span>
+                        </span>
                     )}
                   </div>
 
@@ -213,7 +206,7 @@ export default function Main() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Terminal>
             </div>
           </div>
         </div>
@@ -295,19 +288,10 @@ export default function Main() {
               ref={computer}
           >
             <div className="pb-4 pt-0">
-              <div className="terminal">
-                <div className="terminal-header">
-                  <div className="terminal-buttons">
-                    <div className="terminal-button terminal-close"></div>
-                    <div className="terminal-button terminal-minimize"></div>
-                    <div className="terminal-button terminal-maximize"></div>
-                  </div>
-                  <div className="terminal-title">neofetch</div>
-                  <div style={{width: "40px"}}></div>
-                </div>
-                <div>
-                  <div className="flex sm:flex-row flex-col mt-2">
-                    <div className="hidden sm:block mr-4">
+              <Terminal title={'neofetch'}>
+                  <div>
+                    <div className="flex sm:flex-row flex-col mt-2">
+                      <div className="hidden sm:block mr-4">
                       <pre className="text-blue-500">
                         {`      /\\      `}<br/>
                         {`     /  \\     `}<br/>
@@ -319,37 +303,37 @@ export default function Main() {
                         {`               `}<br/>
                         {`               `}<br/>
                       </pre>
-                    </div>
-                    <div>
-                      {terminalData.map((data, index) => (
-                          <div key={index} className="arch-info-row">
-                            <span className="arch-info-label">{Object.keys(data)[0]}:</span>
-                            <span className="output-line">{data[Object.keys(data)[0]]}</span>
-                          </div>
-                      ))}
-                      <div className="mt-2">
-                        <div className="color-blocks-big">
-                          <div className="color-row-big">
-                            <div className="color-block-big bg-[#1a1b26]"><span>0</span></div>
-                            <div className="color-block-big bg-[#f7768e]"><span>1</span></div>
-                            <div className="color-block-big bg-[#9ece6a]"><span>2</span></div>
-                            <div className="color-block-big bg-[#e0af68]"><span>3</span></div>
-                            <div className="color-block-big bg-[#7aa2f7]"><span>4</span></div>
-                            <div className="color-block-big bg-[#bb9af7]"><span>5</span></div>
-                            <div className="color-block-big bg-[#7dcfff]"><span>6</span></div>
-                            <div className="color-block-big bg-[#c0Mull]"><span>7</span></div>
+                      </div>
+                      <div>
+                        {terminalData.map((data, index) => (
+                            <div key={index} className="arch-info-row">
+                              <span className="arch-info-label">{Object.keys(data)[0]}:</span>
+                              <span className="output-line">{data[Object.keys(data)[0]]}</span>
+                            </div>
+                        ))}
+                        <div className="mt-2">
+                          <div className="color-blocks-big">
+                            <div className="color-row-big">
+                              <div className="color-block-big bg-[#1a1b26]"><span>0</span></div>
+                              <div className="color-block-big bg-[#f7768e]"><span>1</span></div>
+                              <div className="color-block-big bg-[#9ece6a]"><span>2</span></div>
+                              <div className="color-block-big bg-[#e0af68]"><span>3</span></div>
+                              <div className="color-block-big bg-[#7aa2f7]"><span>4</span></div>
+                              <div className="color-block-big bg-[#bb9af7]"><span>5</span></div>
+                              <div className="color-block-big bg-[#7dcfff]"><span>6</span></div>
+                              <div className="color-block-big bg-[#c0Mull]"><span>7</span></div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="mt-3">
-                    <span className="prompt">{ME}@arch:~$</span>
-                    <span className="command highlight"> I use Arch btw</span>
-                  </div>
+                    <div className="mt-3">
+                      <span className="prompt">{ME}@arch:~$</span>
+                      <span className="command highlight"> I use Arch btw</span>
+                    </div>
 
-                </div>
-              </div>
+                  </div>
+                </Terminal>
             </div>
           </div>
         </div>
