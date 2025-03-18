@@ -231,7 +231,7 @@ export default function Blog() {
       <div className="flex md:flex-row md:gap-6 flex-col">
         {/* Blog post sidebar - fixed width on desktop, scrollable on mobile */}
         <div className="md-w-custom flex-shrink-0 space-y-4 h-fit overflow-y-auto overflow-hidden">
-          <Terminal className={'min-h-[23rem]'} title={'posts/'}>
+          <Terminal className={'min-h-[24rem]'} title={'posts/'}>
             <div className="p-4">
               <div className="flex mb-3">
                 <span className="prompt">{ME}@blog:~$</span>
@@ -350,7 +350,7 @@ export default function Blog() {
 
             <div className="flex">
               <span className="prompt">{ME}@blog:~$</span>
-              <span className="ml-2 typed-text">Blog service is not available</span>
+              <span className="ml-2 typed-text">Closed</span>
             </div>
 
           </div>
