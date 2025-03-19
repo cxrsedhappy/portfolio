@@ -1,6 +1,30 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import Terminal from "../components/Terminal.jsx";
+
+
+function Help() {
+  return (
+    <div>
+      <p className="output-line">Available commands:</p>
+      <p className="output-line">
+        <span className="command-highlight">clear</span> - Clear the terminal</p>
+      <p className="output-line">
+        <span className="command-highlight">ls</span> / <span className="command-highlight"> all.sh</span> -
+        List all posts</p>
+      <p className="output-line">
+        <span className="command-highlight">find</span> <span className="command">[term]</span> - Search posts
+        by title</p>
+      <p className="output-line">
+        <span className="command-highlight">page next/prev</span>- Navigate between pages</p>
+      <p className="output-line">
+        <span className="command-highlight">page</span> <span className="command">[number]</span> - Go to
+        specific page</p>
+      <p className="output-line"><span className="command-highlight">help</span> - Show this help</p>
+    </div>
+  );
+}
 
 export default function Blog() {
   const selectedPost = useState(null);
@@ -19,20 +43,30 @@ export default function Blog() {
       date: "2023-12-15",
       summary: "How I mastered React and built my first production application.",
       content: `
-        <p>When I first started learning React, I struggled with understanding the component lifecycle and state management. After weeks of practice and building small projects, I finally got comfortable with hooks and the virtual DOM.</p>
+        # My Journey in Learning React
         
-        <p>I built my first production application - a CRM system for managing software licenses. It was challenging but incredibly rewarding. The application now serves hundreds of users and has helped streamline the company's operations.</p>
+        When I first started learning React, I struggled with understanding the component lifecycle and state management. After weeks of practice and building small projects, I finally got comfortable with hooks and the virtual DOM.
         
-        <p>Key technologies I used:</p>
-        <ul>
-          <li>React with functional components and hooks</li>
-          <li>Context API for state management</li>
-          <li>Tailwind CSS for styling</li>
-          <li>FastAPI for the backend</li>
-        </ul>
+        I built my first production application - a CRM system for managing software licenses. It was challenging but incredibly rewarding. The application now serves hundreds of users and has helped streamline the company's operations.
         
-        <p>This project taught me a lot about working with clients, gathering requirements, and delivering a polished product on time.</p>
+        ## Key technologies I used:
+        
+        - React with functional components and hooks
+        - Context API for state management
+        - Tailwind CSS for styling
+        - FastAPI for the backend
+        
+        This project taught me a lot about working with clients, gathering requirements, and delivering a polished product on time.
+        
+        ## The Learning Curve
+        
+        The most challenging part was understanding how to structure a larger application. I experimented with different patterns before settling on a feature-based organization that made the most sense for our project.
+        
+        ## Conclusion
+        
+        If you're just getting started with React, my advice is to build small projects first and gradually increase complexity. The official documentation is excellent, and there are many helpful communities where you can ask questions.
       `,
+      tags: ["React", "Frontend", "JavaScript", "WebDev"],
       views: 254
     },
     {
@@ -41,18 +75,37 @@ export default function Blog() {
       date: "2024-01-20",
       summary: "My experience switching to Arch Linux and diving into system administration.",
       content: `
-        <p>After years of using Windows, I decided to make the switch to Linux. I chose Arch Linux for its flexibility and learning potential, despite its reputation for being difficult to set up.</p>
+        # Exploring Linux and System Administration
         
-        <p>The installation process was challenging but enlightening. I learned about:</p>
-        <ul>
-          <li>Partitioning and filesystem management</li>
-          <li>Bootloaders and kernel parameters</li>
-          <li>Package management with pacman</li>
-          <li>Window managers and desktop customization</li>
-        </ul>
+        After years of using Windows, I decided to make the switch to Linux. I chose Arch Linux for its flexibility and learning potential, despite its reputation for being difficult to set up.
         
-        <p>Now, I use Linux daily for development and have automated many of my workflows using shell scripts. My productivity has increased dramatically, and I've gained valuable skills in system administration.</p>
+        The installation process was challenging but enlightening. I learned about:
+        
+        - Partitioning and filesystem management
+        - Bootloaders and kernel parameters
+        - Package management with pacman
+        - Window managers and desktop customization
+        
+        Now, I use Linux daily for development and have automated many of my workflows using shell scripts. My productivity has increased dramatically, and I've gained valuable skills in system administration.
+        
+        ## Custom Configuration
+        
+        One of the most rewarding aspects of using Arch Linux is the ability to customize every aspect of the system. I've created a personalized development environment that perfectly fits my workflow.
+        
+        ## Terminal-Based Workflow
+        
+        Switching to a primarily terminal-based workflow has made me much more efficient. I use tools like:
+        
+        - Neovim for text editing
+        - Tmux for terminal multiplexing
+        - Zsh with custom aliases and functions
+        - Ranger for file management
+        
+        ## Conclusion
+        
+        While the learning curve was steep, the investment in learning Linux has paid off tremendously in terms of productivity and understanding of computing fundamentals.
       `,
+      tags: ["Linux", "Arch", "System Admin", "Terminal"],
       views: 178
     },
     {
@@ -61,19 +114,29 @@ export default function Blog() {
       date: "2024-02-10",
       summary: "How I started contributing to open-source projects and what I've learned.",
       content: `
-        <p>Contributing to open-source projects seemed intimidating at first, but after making my first pull request, I was hooked. I started with documentation improvements and small bug fixes before moving on to more substantial features.</p>
+        # Contributing to Open Source
         
-        <p>Some projects I've contributed to include:</p>
-        <ul>
-          <li>A popular React component library</li>
-          <li>Several Python utility packages</li>
-          <li>A Neovim plugin for developers</li>
-        </ul>
+        Contributing to open-source projects seemed intimidating at first, but after making my first pull request, I was hooked. I started with documentation improvements and small bug fixes before moving on to more substantial features.
         
-        <p>Through these contributions, I've improved my code quality, learned to work collaboratively with developers from around the world, and built a network of like-minded professionals.</p>
+        Some projects I've contributed to include:
         
-        <p>Open source has been not just a way to give back to the community, but also an incredible learning opportunity.</p>
+        - A popular React component library
+        - Several Python utility packages
+        - A Neovim plugin for developers
+        
+        Through these contributions, I've improved my code quality, learned to work collaboratively with developers from around the world, and built a network of like-minded professionals.
+        
+        Open source has been not just a way to give back to the community, but also an incredible learning opportunity.
+        
+        ## Getting Started
+        
+        The best way to get started with open source is to find a project you already use and love. Look for issues labeled "good first issue" or "beginner friendly" and don't be afraid to ask questions.
+        
+        ## Building Relationships
+        
+        Some of the most valuable aspects of open source contribution are the relationships you build with other developers. I've found mentors and collaborators through these projects who have helped me grow as a developer.
       `,
+      tags: ["Open Source", "GitHub", "Collaboration", "Community"],
       views: 315
     },
     {
@@ -82,17 +145,33 @@ export default function Blog() {
       date: "2024-03-05",
       summary: "How I built a portfolio website using React and Tailwind CSS.",
       content: `
-        <p>Building a portfolio website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.</p>
+        # Building a Portfolio Website with React
         
-        <p>The portfolio website features:</p>
-        <ul>
-          <li>Responsive design for different screen sizes</li>
-          <li>Dynamic content using JSON data</li>
-          <li>Styling with Tailwind CSS</li>
-        </ul>
+        Building a portfolio website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.
         
-        <p>This project helped me improve my front-end development skills and showcase my work to potential employers.</p>
+        The portfolio website features:
+        
+        - Responsive design for different screen sizes
+        - Dynamic content using JSON data
+        - Styling with Tailwind CSS
+        
+        This project helped me improve my front-end development skills and showcase my work to potential employers.
+        
+        ## Design Principles
+        
+        When designing my portfolio, I focused on simplicity and usability. I wanted visitors to be able to quickly find the information they were looking for without unnecessary distractions.
+        
+        ## Performance Optimization
+        
+        I implemented several performance optimizations, including:
+        
+        - Lazy loading of images
+        - Code splitting
+        - Optimized asset delivery
+        
+        These improvements resulted in a Lighthouse score of 98 for performance.
       `,
+      tags: ["React", "Portfolio", "Tailwind CSS", "Frontend"],
       views: 210
     },
     {
@@ -101,15 +180,29 @@ export default function Blog() {
       date: "2024-04-15",
       summary: "My experience with Kubernetes and Docker for containerization.",
       content: `
-        <p>Exploring Kubernetes and Docker for containerization was a fascinating journey. I learned about:</p>
-        <ul>
-          <li>Pods, services, and deployments</li>
-          <li>Network policies and security</li>
-          <li>Scaling and autoscaling</li>
-        </ul>
+        # Exploring Kubernetes and Docker
         
-        <p>By using Kubernetes and Docker, I have a better understanding of how to manage complex distributed systems and deliver high availability and scalability.</p>        
+        Exploring Kubernetes and Docker for containerization was a fascinating journey. I learned about:
+        
+        - Pods, services, and deployments
+        - Network policies and security
+        - Scaling and autoscaling
+        
+        By using Kubernetes and Docker, I have a better understanding of how to manage complex distributed systems and deliver high availability and scalability.
+        
+        ## Real-World Application
+        
+        I applied these technologies to a microservices project that needed to handle variable load. Kubernetes made it possible to:
+        
+        - Automatically scale services based on CPU and memory usage
+        - Implement rolling updates with zero downtime
+        - Self-heal when containers crashed
+        
+        ## Challenges and Solutions
+        
+        One of the biggest challenges was configuring persistent storage correctly. After experimenting with several approaches, I settled on a combination of StatefulSets and PersistentVolumeClaims that provided the reliability we needed.
       `,
+      tags: ["Kubernetes", "Docker", "DevOps", "Containerization"],
       views: 128
     },
     {
@@ -118,15 +211,32 @@ export default function Blog() {
       date: "2024-05-20",
       summary: "How I built a blog website using React and Tailwind CSS.",
       content: `
-        <p>Building a blog website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.</p>
+        # Building a Blog Website with React
         
-        <p>The blog website features:</p>
-        <ul>
-          <li>Responsive design for different screen sizes</li>
-          <li>Dynamic content using JSON data</li>
-          <li>Styling with Tailwind CSS</li>
-        </ul>        
+        Building a blog website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.
+        
+        The blog website features:
+        
+        - Responsive design for different screen sizes
+        - Dynamic content using JSON data
+        - Styling with Tailwind CSS
+        
+        ## Content Management
+        
+        Rather than using a traditional CMS, I built a simple Markdown-based system that allows me to write posts in my favorite editor and automatically deploy them when I push to my repository.
+        
+        ## SEO Considerations
+        
+        I implemented several SEO best practices:
+        
+        - Server-side rendering for initial page load
+        - Proper meta tags for each post
+        - Structured data for rich search results
+        - Optimized loading times
+        
+        These efforts have resulted in steadily increasing organic traffic to my blog.
       `,
+      tags: ["React", "Blog", "Tailwind CSS", "Content"],
       views: 75
     }
   ];
@@ -231,6 +341,7 @@ export default function Blog() {
       <div className="flex md:flex-row md:gap-6 flex-col">
         {/* Blog post sidebar - fixed width on desktop, scrollable on mobile */}
         <div className="md-w-custom flex-shrink-0 space-y-4 h-fit overflow-y-auto overflow-hidden">
+
           <Terminal className={'min-h-[24rem]'} title={'posts/'}>
             <div className="p-4">
               <div className="flex mb-3">
@@ -245,20 +356,7 @@ export default function Blog() {
               </div>
               <div className="terminal-output mb-2">
                 {currentCommand === 'help' ? (
-                    <div className="animated-output">
-                      <p className="output-line">Available commands:</p>
-                      <p className="output-line">
-                        <span className="command-highlight">clear</span> - Clear the terminal</p>
-                      <p className="output-line">
-                        <span className="command-highlight">ls</span> / <span className="command-highlight"> all.sh</span> - List all posts</p>
-                      <p className="output-line">
-                        <span className="command-highlight">find</span> <span className="command">[term]</span> - Search posts by title</p>
-                      <p className="output-line">
-                        <span className="command-highlight">page next/prev</span>- Navigate between pages</p>
-                      <p className="output-line">
-                        <span className="command-highlight">page</span> <span className="command">[number]</span> - Go to specific page</p>
-                      <p className="output-line"><span className="command-highlight">help</span> - Show this help</p>
-                    </div>
+                  <Help/>
                 ) : currentCommand === 'clear' ? (
                   <div className="animated-output"></div>
                 ) : (
@@ -304,6 +402,7 @@ export default function Blog() {
               </Link>
             ))}
           </div>
+
         </div>
 
         {/* Main content area - flexible width */}
@@ -330,23 +429,7 @@ export default function Blog() {
               <p>Select a post from the sidebar to start reading. I update this blog regularly with new content.</p>
             </div>
 
-            <div>
-              <p className="output-line">Available commands:</p>
-              <p className="output-line">
-                <span className="command-highlight">clear</span> - Clear the terminal</p>
-              <p className="output-line">
-                <span className="command-highlight">ls</span> / <span className="command-highlight"> all.sh</span> -
-                List all posts</p>
-              <p className="output-line">
-                <span className="command-highlight">find</span> <span className="command">[term]</span> - Search posts
-                by title</p>
-              <p className="output-line">
-                <span className="command-highlight">page next/prev</span>- Navigate between pages</p>
-              <p className="output-line">
-                <span className="command-highlight">page</span> <span className="command">[number]</span> - Go to
-                specific page</p>
-              <p className="output-line"><span className="command-highlight">help</span> - Show this help</p>
-            </div>
+            <Help/>
 
             <div className="flex">
               <span className="prompt">{ME}@blog:~$</span>
