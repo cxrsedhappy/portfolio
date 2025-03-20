@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { marked } from 'marked';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { motion } from "framer-motion";
+
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import NotFound from "./NotFound.jsx";
 import Terminal from "../components/Terminal.jsx";
@@ -17,10 +21,61 @@ export default function Post() {
   const blogPosts = [
     {
       id: 3,
-      title: "My Journey in Learning React",
+      title: "Markdown demo test",
       date: "2025-03-20",
-      summary: "How I mastered React and built my first production application.",
-      content: "# My Journey in Learning React\n\nTEST\n\nWhen I first started learning React, I struggled with understanding the component lifecycle and state management. After weeks of practice and building small projects, I finally got comfortable with hooks and the virtual DOM.\n\nI built my first production application - a CRM system for managing software licenses. It was challenging but incredibly rewarding. The application now serves hundreds of users and has helped streamline the company's operations.\n\n## Key technologies I used:\n\n- React with functional components and hooks\n- Context API for state management\n- Tailwind CSS for styling\n- FastAPI for the backend\n\n```python\nprint(\"Hello, world!\")\n```\n\nThis project taught me a lot about working with clients, gathering requirements, and delivering a polished product on time.\n\n## The Learning Curve\n\nThe most challenging part was understanding how to structure a larger application. I experimented with different patterns before settling on a feature-based organization that made the most sense for our project.\n\n## Conclusion\n\nIf you're just getting started with React, my advice is to build small projects first and gradually increase complexity. The official documentation is excellent, and there are many helpful communities where you can ask questions.\n\n[Never Gonna Give You Up](https://www.youtube.com/watch?v=dQw4w9WgXcQ)",
+      summary: "Markdown post for testing",
+      content: `
+ 
+ 
+
+# Markdown demo
+
+      
+**strong importance**
+
+*emphasis*
+
+> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+
+~
+code
+~
+
+* Lists
+* [ ] todo
+* [x] done
+
+A table:
+
+| a | b test | TESTING |
+| - | - | - |
+| 1 | 2 | 3 |
+
+Here is some JavaScript code:
+
+~~~js
+console.log('It works!')
+~~~
+
+And here is some Python code:
+
+~~~python
+import fastapi
+
+class App(Base):
+    def __init__(self):
+        pass
+
+
+if "__name__" == __main__:
+    asyncio.run(main())
+
+
+# Lorem ipsum???
+// UNITTEST
+~~~
+
+`,
       tags: ["React", "Frontend", "JavaScript", "WebDev"],
       views: 254
     },
@@ -156,7 +211,7 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
 
   if (loading) {
     return (
-      <div className="m-auto w-full max-w-5xl my-14 px-4 flex justify-center items-center min-h-[60vh]">
+      <div className="mx-auto w-full max-w-7xl my-14 px-4 flex justify-center items-center min-h-[60vh]">
         <div className="text-blue-400">Loading post...</div>
       </div>
     );
@@ -166,7 +221,6 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
     return (
       <div className="flex flex-1 items-center justify-center mt-24">
         <motion.div
-          className={'mt-12'}
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           exit={{opacity: 0}}
@@ -179,9 +233,9 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
   }
 
   return (
-      <main className="m-auto w-full max-w-5xl my-14 px-0 sm:px-4 animate-fadeIn">
-        <div className="flex justify-between items-center mb-8 px-4 sm:px-0">
-          <h1 className="text-3xl sm:text-4xl text-purple-400 terminal-title">
+    <main className="w-full max-w-7xl mx-auto my-14 sm:px-4 fade-in">
+      <div className="flex justify-between items-center px-4 sm:px-0 mb-8">
+          <h1 className="text-3xl sm:text-4xl terminal-title">
             $ cat {post.title.toLowerCase().replace(/ /g, '-')}.md
           </h1>
           <Link to="/blog" className="py-2 px-4 rounded transition-all duration-300 flex items-center">
@@ -196,7 +250,7 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
         {/* Main content area with terminal style */}
         <div className="w-full md:w-3/4">
           <Terminal title={post.title}>
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center">
                   <div className="h-10 w-10 rounded-full bg-purple-600 flex items-center justify-center">
@@ -212,8 +266,39 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
                 </div>
               </div>
 
-              <article className="prose prose-invert prose-purple max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: marked(post.content) }} />
+              <article className="prose prose-invert prose-purple max-w-none w-full overflow-hidden">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    code({node, inline, className, children, ...props}) {
+                      const match = /language-(\w+)/.exec(className || '');
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          style={vscDarkPlus}
+                          language={match[1]}
+                          PreTag="div"
+                          {...props}
+                          customStyle={{width: '100%', maxWidth: '100%'}}
+                        >{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
+                      ) : (
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      );
+                    },
+                    table({node, className, children, ...props}) {
+                      return (
+                        <div className="overflow-x-auto w-full">
+                          <table className="table-auto border-collapse w-full" {...props}>
+                            {children}
+                          </table>
+                        </div>
+                      );
+                    },
+                  }}
+                >
+                  {post.content}
+                </ReactMarkdown>
               </article>
 
               <div className="mt-8 pt-6 border-t border-gray-700">

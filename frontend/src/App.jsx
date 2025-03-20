@@ -6,16 +6,16 @@ import Jumpscare from "./pages/Jumpscare.jsx";
 import ProjectKali from "./pages/ProjectKali.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Contact from "./pages/Contacts.jsx";
-
-import './App.css'
 import Blog from "./pages/Blog.jsx";
 import Post from "./pages/Post.jsx";
+
+import './App.css'
 
 export default function App() {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col bg-black text-white m-auto">
+    <>
       <AnimatePresence mode='wait'>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
@@ -106,6 +106,6 @@ export default function App() {
           }/>
         </Routes>
       </AnimatePresence>
-    </div>
+    </>
   )
 }

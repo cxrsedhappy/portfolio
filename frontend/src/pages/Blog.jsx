@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Terminal from "../components/Terminal.jsx";
 
-
 function Help() {
   return (
     <div>
@@ -39,10 +38,67 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 3,
-      title: "My Journey in Learning React",
+      title: "Markdown demo test",
       date: "2025-03-20",
-      summary: "How I mastered React and built my first production application.",
-      content: "# My Journey in Learning React\n\nTEST\n\nWhen I first started learning React, I struggled with understanding the component lifecycle and state management. After weeks of practice and building small projects, I finally got comfortable with hooks and the virtual DOM.\n\nI built my first production application - a CRM system for managing software licenses. It was challenging but incredibly rewarding. The application now serves hundreds of users and has helped streamline the company's operations.\n\n## Key technologies I used:\n\n- React with functional components and hooks\n- Context API for state management\n- Tailwind CSS for styling\n- FastAPI for the backend\n\n```python\nprint(\"Hello, world!\")\n```\n\nThis project taught me a lot about working with clients, gathering requirements, and delivering a polished product on time.\n\n## The Learning Curve\n\nThe most challenging part was understanding how to structure a larger application. I experimented with different patterns before settling on a feature-based organization that made the most sense for our project.\n\n## Conclusion\n\nIf you're just getting started with React, my advice is to build small projects first and gradually increase complexity. The official documentation is excellent, and there are many helpful communities where you can ask questions.\n\n[Never Gonna Give You Up](https://www.youtube.com/watch?v=dQw4w9WgXcQ)",
+      summary: "Markdown post for testing",
+      content: `
+      A paragraph with *emphasis* and **strong importance**.
+      
+**strong importance**
+
+*emphasis*
+
+> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+
+~
+code
+~
+
+* Lists
+* [ ] todo
+* [x] done
+
+A table:
+
+| a | b |
+| - | - |
+
+Here is some JavaScript code:
+
+~~~js
+console.log('It works!')
+~~~
+
+And here is some Python code:
+
+~~~python
+import fastapi
+import fastapi.status from fastapi.responses import JSONResponse
+
+class Application(BaseClass):
+    def __init__(self, cool: bool):
+        self.cool: bool = cool
+
+
+if "__name__" == __main__:
+    asyncio.run(main())
+
+
+# Lorem ipsum???
+// UNITTEST
+~~~
+
+> C++ code right below
+
+~~~c++
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+~~~
+`,
       tags: ["React", "Frontend", "JavaScript", "WebDev"],
       views: 254
     },
