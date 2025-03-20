@@ -38,206 +38,121 @@ export default function Blog() {
 
   const blogPosts = [
     {
-      id: 1,
+      id: 3,
       title: "My Journey in Learning React",
-      date: "2023-12-15",
+      date: "2025-03-20",
       summary: "How I mastered React and built my first production application.",
-      content: `
-        # My Journey in Learning React
-        
-        When I first started learning React, I struggled with understanding the component lifecycle and state management. After weeks of practice and building small projects, I finally got comfortable with hooks and the virtual DOM.
-        
-        I built my first production application - a CRM system for managing software licenses. It was challenging but incredibly rewarding. The application now serves hundreds of users and has helped streamline the company's operations.
-        
-        ## Key technologies I used:
-        
-        - React with functional components and hooks
-        - Context API for state management
-        - Tailwind CSS for styling
-        - FastAPI for the backend
-        
-        This project taught me a lot about working with clients, gathering requirements, and delivering a polished product on time.
-        
-        ## The Learning Curve
-        
-        The most challenging part was understanding how to structure a larger application. I experimented with different patterns before settling on a feature-based organization that made the most sense for our project.
-        
-        ## Conclusion
-        
-        If you're just getting started with React, my advice is to build small projects first and gradually increase complexity. The official documentation is excellent, and there are many helpful communities where you can ask questions.
-      `,
+      content: "# My Journey in Learning React\n\nTEST\n\nWhen I first started learning React, I struggled with understanding the component lifecycle and state management. After weeks of practice and building small projects, I finally got comfortable with hooks and the virtual DOM.\n\nI built my first production application - a CRM system for managing software licenses. It was challenging but incredibly rewarding. The application now serves hundreds of users and has helped streamline the company's operations.\n\n## Key technologies I used:\n\n- React with functional components and hooks\n- Context API for state management\n- Tailwind CSS for styling\n- FastAPI for the backend\n\n```python\nprint(\"Hello, world!\")\n```\n\nThis project taught me a lot about working with clients, gathering requirements, and delivering a polished product on time.\n\n## The Learning Curve\n\nThe most challenging part was understanding how to structure a larger application. I experimented with different patterns before settling on a feature-based organization that made the most sense for our project.\n\n## Conclusion\n\nIf you're just getting started with React, my advice is to build small projects first and gradually increase complexity. The official documentation is excellent, and there are many helpful communities where you can ask questions.\n\n[Never Gonna Give You Up](https://www.youtube.com/watch?v=dQw4w9WgXcQ)",
       tags: ["React", "Frontend", "JavaScript", "WebDev"],
       views: 254
     },
     {
       id: 2,
       title: "Exploring Linux and System Administration",
-      date: "2024-01-20",
+      date: "2025-03-18",
       summary: "My experience switching to Arch Linux and diving into system administration.",
       content: `
-        # Exploring Linux and System Administration
-        
-        After years of using Windows, I decided to make the switch to Linux. I chose Arch Linux for its flexibility and learning potential, despite its reputation for being difficult to set up.
-        
-        The installation process was challenging but enlightening. I learned about:
-        
-        - Partitioning and filesystem management
-        - Bootloaders and kernel parameters
-        - Package management with pacman
-        - Window managers and desktop customization
-        
-        Now, I use Linux daily for development and have automated many of my workflows using shell scripts. My productivity has increased dramatically, and I've gained valuable skills in system administration.
-        
-        ## Custom Configuration
-        
-        One of the most rewarding aspects of using Arch Linux is the ability to customize every aspect of the system. I've created a personalized development environment that perfectly fits my workflow.
-        
-        ## Terminal-Based Workflow
-        
-        Switching to a primarily terminal-based workflow has made me much more efficient. I use tools like:
-        
-        - Neovim for text editing
-        - Tmux for terminal multiplexing
-        - Zsh with custom aliases and functions
-        - Ranger for file management
-        
-        ## Conclusion
-        
-        While the learning curve was steep, the investment in learning Linux has paid off tremendously in terms of productivity and understanding of computing fundamentals.
+# Exploring Linux and System Administration
+
+After years of using Windows, I decided to make the switch to Linux. I chose Arch Linux for its flexibility and learning potential, despite its reputation for being difficult to set up.
+
+The installation process was challenging but enlightening. I learned about:
+
+- Partitioning and filesystem management
+- Bootloaders and kernel parameters
+- Package management with pacman
+- Window managers and desktop customization
+
+Now, I use Linux daily for development and have automated many of my workflows using shell scripts. My productivity has increased dramatically, and I've gained valuable skills in system administration.
+
+## Custom Configuration
+
+One of the most rewarding aspects of using Arch Linux is the ability to customize every aspect of the system. I've created a personalized development environment that perfectly fits my workflow.
+
+## Terminal-Based Workflow
+
+Switching to a primarily terminal-based workflow has made me much more efficient. I use tools like:
+
+- Neovim for text editing
+- Tmux for terminal multiplexing
+- Zsh with custom aliases and functions
+- Ranger for file management
+
+## Conclusion
+
+While the learning curve was steep, the investment in learning Linux has paid off tremendously in terms of productivity and understanding of computing fundamentals.
       `,
       tags: ["Linux", "Arch", "System Admin", "Terminal"],
       views: 178
     },
     {
-      id: 3,
-      title: "Contributing to Open Source",
-      date: "2024-02-10",
-      summary: "How I started contributing to open-source projects and what I've learned.",
-      content: `
-        # Contributing to Open Source
-        
-        Contributing to open-source projects seemed intimidating at first, but after making my first pull request, I was hooked. I started with documentation improvements and small bug fixes before moving on to more substantial features.
-        
-        Some projects I've contributed to include:
-        
-        - A popular React component library
-        - Several Python utility packages
-        - A Neovim plugin for developers
-        
-        Through these contributions, I've improved my code quality, learned to work collaboratively with developers from around the world, and built a network of like-minded professionals.
-        
-        Open source has been not just a way to give back to the community, but also an incredible learning opportunity.
-        
-        ## Getting Started
-        
-        The best way to get started with open source is to find a project you already use and love. Look for issues labeled "good first issue" or "beginner friendly" and don't be afraid to ask questions.
-        
-        ## Building Relationships
-        
-        Some of the most valuable aspects of open source contribution are the relationships you build with other developers. I've found mentors and collaborators through these projects who have helped me grow as a developer.
-      `,
-      tags: ["Open Source", "GitHub", "Collaboration", "Community"],
-      views: 315
-    },
-    {
-      id: 4,
+      id: 1,
       title: "Building a Portfolio Website with React",
-      date: "2024-03-05",
+      date: "2025-03-05",
       summary: "How I built a portfolio website using React and Tailwind CSS.",
       content: `
-        # Building a Portfolio Website with React
-        
-        Building a portfolio website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.
-        
-        The portfolio website features:
-        
-        - Responsive design for different screen sizes
-        - Dynamic content using JSON data
-        - Styling with Tailwind CSS
-        
-        This project helped me improve my front-end development skills and showcase my work to potential employers.
-        
-        ## Design Principles
-        
-        When designing my portfolio, I focused on simplicity and usability. I wanted visitors to be able to quickly find the information they were looking for without unnecessary distractions.
-        
-        ## Performance Optimization
-        
-        I implemented several performance optimizations, including:
-        
-        - Lazy loading of images
-        - Code splitting
-        - Optimized asset delivery
-        
-        These improvements resulted in a Lighthouse score of 98 for performance.
+# Building a Portfolio Website with React
+
+Building a portfolio website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.
+
+The portfolio website features:
+
+- Responsive design for different screen sizes
+- Dynamic content using JSON data
+- Styling with Tailwind CSS
+
+This project helped me improve my front-end development skills and showcase my work to potential employers.
+
+## Design Principles
+
+When designing my portfolio, I focused on simplicity and usability. I wanted visitors to be able to quickly find the information they were looking for without unnecessary distractions.
+
+## Performance Optimization
+
+I implemented several performance optimizations, including:
+
+- Lazy loading of images
+- Code splitting
+- Optimized asset delivery
+
+These improvements resulted in a Lighthouse score of 98 for performance.
       `,
       tags: ["React", "Portfolio", "Tailwind CSS", "Frontend"],
       views: 210
     },
     {
-      id: 5,
-      title: "Exploring Kubernetes and Docker",
-      date: "2024-04-15",
-      summary: "My experience with Kubernetes and Docker for containerization.",
-      content: `
-        # Exploring Kubernetes and Docker
-        
-        Exploring Kubernetes and Docker for containerization was a fascinating journey. I learned about:
-        
-        - Pods, services, and deployments
-        - Network policies and security
-        - Scaling and autoscaling
-        
-        By using Kubernetes and Docker, I have a better understanding of how to manage complex distributed systems and deliver high availability and scalability.
-        
-        ## Real-World Application
-        
-        I applied these technologies to a microservices project that needed to handle variable load. Kubernetes made it possible to:
-        
-        - Automatically scale services based on CPU and memory usage
-        - Implement rolling updates with zero downtime
-        - Self-heal when containers crashed
-        
-        ## Challenges and Solutions
-        
-        One of the biggest challenges was configuring persistent storage correctly. After experimenting with several approaches, I settled on a combination of StatefulSets and PersistentVolumeClaims that provided the reliability we needed.
-      `,
-      tags: ["Kubernetes", "Docker", "DevOps", "Containerization"],
-      views: 128
-    },
-    {
-      id: 6,
+      id: 0,
       title: "Building a Blog Website with React",
-      date: "2024-05-20",
+      date: "2025-03-17",
       summary: "How I built a blog website using React and Tailwind CSS.",
       content: `
-        # Building a Blog Website with React
-        
-        Building a blog website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.
-        
-        The blog website features:
-        
-        - Responsive design for different screen sizes
-        - Dynamic content using JSON data
-        - Styling with Tailwind CSS
-        
-        ## Content Management
-        
-        Rather than using a traditional CMS, I built a simple Markdown-based system that allows me to write posts in my favorite editor and automatically deploy them when I push to my repository.
-        
-        ## SEO Considerations
-        
-        I implemented several SEO best practices:
-        
-        - Server-side rendering for initial page load
-        - Proper meta tags for each post
-        - Structured data for rich search results
-        - Optimized loading times
-        
-        These efforts have resulted in steadily increasing organic traffic to my blog.
+# Building a Blog Website with React
+
+Building a blog website with React and Tailwind CSS was a fun and rewarding experience. I learned how to create reusable components and manage state using React hooks.
+
+The blog website features:
+
+- Responsive design for different screen sizes
+- Dynamic content using JSON data
+- Styling with Tailwind CSS
+
+## Content Management
+
+Rather than using a traditional CMS, I built a simple Markdown-based system that allows me to write posts in my favorite editor and automatically deploy them when I push to my repository.
+
+## SEO Considerations
+
+I implemented several SEO best practices:
+
+- Server-side rendering for initial page load
+- Proper meta tags for each post
+- Structured data for rich search results
+- Optimized loading times
+
+These efforts have resulted in steadily increasing organic traffic to my blog.
       `,
-      tags: ["React", "Blog", "Tailwind CSS", "Content"],
-      views: 75
+      tags: ["React", "Blog", "React", "Tailwind CSS"],
+      views: 76
     }
   ];
 
