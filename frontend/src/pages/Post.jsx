@@ -10,6 +10,7 @@ import remarkGfm from 'remark-gfm';
 
 import NotFound from "./NotFound.jsx";
 import Terminal from "../components/Terminal.jsx";
+import './Post.css';
 
 export default function Post() {
   const { id } = useParams();

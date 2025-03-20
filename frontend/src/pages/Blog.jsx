@@ -5,7 +5,7 @@ import Terminal from "../components/Terminal.jsx";
 
 function Help() {
   return (
-    <div>
+    <>
       <p className="output-line">Available commands:</p>
       <p className="output-line">
         <span className="command-highlight">clear</span> - Clear the terminal</p>
@@ -21,18 +21,19 @@ function Help() {
         <span className="command-highlight">page</span> <span className="command">[number]</span> - Go to
         specific page</p>
       <p className="output-line"><span className="command-highlight">help</span> - Show this help</p>
-    </div>
+    </>
   );
 }
 
 export default function Blog() {
-  const selectedPost = useState(null);
   const fadeIn = useState(false)
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCommand, setCurrentCommand] = useState('ls -la posts/');
   const [commandHistory, setCommandHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+
+  const ME = "stanislaw"
   const postsPerPage = 5;
 
   const blogPosts = [
@@ -212,7 +213,6 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
     }
   ];
 
-  const ME = "stanislaw"
   const topPosts = [...blogPosts].sort((a, b) => b.views - a.views).slice(0, 3);
 
   const handleCommand = (e) => {
@@ -339,7 +339,7 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
                       <Link
                         key={index}
                         to={`/blog/${post.id}`}
-                        className={`block output-line animated-output hover:bg-gray-800 p-1 rounded transition-colors ${selectedPost?.id === post.id ? 'bg-gray-800' : ''}`}
+                        className={`block output-line animated-output hover:bg-gray-800 p-1 rounded transition-colors`}
                         style={{animationDelay: `${index * 150}ms`}}
                       >
                         <span className="text-gray-400">{post.date}</span> <span className="highlight">{post.title.toLowerCase().replace(/ /g, '-')}.md</span> <span className="text-xs text-gray-500 whitespace-nowrap">({post.views} views)</span>
@@ -363,7 +363,7 @@ These efforts have resulted in steadily increasing organic traffic to my blog.
               <Link
                 key={post.id}
                 to={`/blog/${post.id}`}
-                className={`project-card block p-4 mb-2 ${selectedPost?.id === post.id ? 'bg-gray-800' : ''}`}
+                className={`project-card block p-4 mb-2`}
               >
                 <div className="flex justify-between">
                   <h3 className="text-lg text-blue-400">{post.title}</h3>

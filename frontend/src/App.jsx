@@ -94,7 +94,6 @@ export default function App() {
           <Route path="*" element={
             <div className="flex flex-1 items-center justify-center mt-24">
               <motion.div
-                  className={'mt-12'}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

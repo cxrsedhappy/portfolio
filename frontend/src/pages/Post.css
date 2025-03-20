@@ -1,0 +1,136 @@
+:root {
+  --prose-color: #f8f8f2;
+  --prose-bg: #1e1e1e;
+  --prose-header: #63b3ed;
+  --prose-hyperlink: #63b3ed;
+  --blockquote-border: #7698d6;
+  --blockquote-color: #66769c;
+  --table-border: #44475a;
+  --table-bg: #282a36;
+}
+
+
+.prose {
+  color: var(--prose-color);
+  line-height: 1.8;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--prose-header);
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+.prose h1 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #44475a;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose a {
+  color: var(--prose-hyperlink);
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.prose code {
+  color: var(--terminal-highlight);
+  background-color: var(--terminal-background);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+.prose pre {
+  background-color: var(--prose-bg);
+  border-radius: 5px;
+  overflow-x: auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.prose pre code {
+  display: inline;
+  background-color: transparent;
+  padding: 0;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 2em;
+  margin: 1.25em 0;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--blockquote-border);
+  padding-left: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: var(--blockquote-color);
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1.5em 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose table th,
+.prose table td {
+  padding: 0.75em;
+  border: 1px solid var(--table-border);
+}
+
+.prose table th {
+  background-color: var(--table-bg);
+  font-weight: 600;
+}

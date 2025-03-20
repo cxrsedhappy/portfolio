@@ -1,3 +1,5 @@
+import "./Terminal.css"
+
 export default function Terminal({className, title, children }) {
     return (
         <div className={`terminal ${className}`}>
@@ -10,7 +12,7 @@ export default function Terminal({className, title, children }) {
                 <div className="terminal-title">{title}</div>
                 <div style={{width: "40px"}}></div>
             </div>
-            <div className="terminal-body">{children}</div>
+            {children}
         </div>
     );
 }

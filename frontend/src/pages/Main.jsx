@@ -1,9 +1,33 @@
 import { useRef, useState } from 'react';
 import { Link } from "react-router-dom";
+
 import Terminal from "../components/Terminal.jsx";
 
 const PC_HOST = "DESKTOP-MAO3BTC";
 const ME = "stanislaw";
+
+export const asciiArt = `
+                     -                          
+                    .o+\`
+                   'ooo/
+                  \`+oooo:
+                 \`+oooooo:
+                 -+oooooo+:
+               \`/:-:++oooo+:
+              \`/++++/+++++++:
+             \`/++++++++++++++:
+            \`/+++ooooooooooooo/\`
+           ./ooosssso++osssssso+\`
+          .oossssso-\`\`\`\`/ossssss+\`
+         -osssssso.      :ssssssso.
+        :osssssss/        osssso+++.
+       /ossssssss/        +ssssooo/-
+     \`/ossssso+/:-        -:/+osssso+-
+    \`+sso+:-\`                 \`.-/+oso:
+   \`++:.                           \`-/+/
+   .\`                                \`/\`
+`;
+
 const terminalData = [
   { "OS": "EndeavourOS Linux x86_64" }, { "Host": "DESKTOP-MAO3BTC" },
   { "Kernel": "6.7.5-arch1-1" }, { "CPU": "13th Gen Intel(R) Core(TM) i5-13400F 2.50 GHz" },
@@ -13,6 +37,16 @@ const terminalData = [
 ];
 
 const sections = ['aboutMe', 'skills', 'projects', 'computer', 'hobbies'];
+
+const AsciiRenderer = ({ asciiText, className = "" }) => {
+  return (
+    <div className={`hidden sm:block ${className}`}>
+      <pre className="text-[12px] text-gray-400">
+        {asciiText}
+      </pre>
+    </div>
+  );
+};
 
 export default function Main() {
   const [openSections, setOpenSections] = useState({
@@ -69,193 +103,169 @@ export default function Main() {
   );
 
   return (
-    <main className="m-auto w-full max-w-[700px] mt-14">
-      <div className="m-auto px-4 sm:px-0 space-y-4">
-        <h1 className="text-center text-3xl sm:text-5xl fonts">
-          Hi<span className="animate-waving-hand inline-block mx-1">👋</span>, I'm Stanislaw.
-        </h1>
+    <main className="m-auto max-w-4xl py-14 px-3 space-y-4">
 
-        <script type="application/ld+json">
-          {`{
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Personal Fullstack Developer",
-            "description": "My personal portfolio. I am fullstack developer with many skills and I have a big tech stack",
-            "url": "http://spashkov.ru",
-            "applicationCategory": "Fullstack",
-            "operatingSystem": "All"
-          }`}
-        </script>
+      <h1 className="text-center text-3xl sm:text-5xl fonts">
+        Hi<span className="animate-waving-hand inline-block mx-1">👋</span>, I'm Stanislaw.
+      </h1>
 
-        <div className="flex justify-center sm:justify-end text-xl sm:text-2xl gap-8 text-gray-300">
-          <Link className="group" to="/blog">
-            <span className="mx-1 py-1 hover:text-white text-gray-300 transition-colors duration-300">Blog</span>
-            <div className="bg-white h-px w-0 group-hover:w-full transition-all duration-500 hidden sm:block"></div>
-          </Link>
-          <Link className="group" to="/contact">
-            <span className="mx-1 hover:text-white text-gray-300 transition-colors duration-300">Contact</span>
-            <div className="bg-white h-px w-0 group-hover:w-full transition-all duration-500 hidden sm:block"></div>
-          </Link>
+      <div className="flex justify-center text-gray-300 gap-8 sm:justify-end text-xl sm:text-2xl">
+        <Link className="group" to="/blog">
+          <span className="mx-1 py-1 hover:text-white text-gray-300 transition-colors duration-300">Blog</span>
+          <div className="bg-white h-px w-0 group-hover:w-full transition-all duration-500 hidden sm:block"></div>
+        </Link>
+        <Link className="group" to="/contact">
+          <span className="mx-1 hover:text-white text-gray-300 transition-colors duration-300">Contact</span>
+          <div className="bg-white h-px w-0 group-hover:w-full transition-all duration-500 hidden sm:block"></div>
+        </Link>
+      </div>
+
+      {renderSection('aboutMe', 'Who am I?', (
+        <div className="space-y-2">
+          <p>I'm a passionate developer with a love for creating elegant solutions to complex problems. Currently focused on fullstack/production development and exploring new technologies.</p>
+          <p>Check out my work on:
+            <Link
+              target="_blank"
+              className="ml-1 text-blue-400 hover:text-blue-300 transition-colors duration-300"
+              to="https://github.com/cxrsedhappy"
+            >
+              GitHub
+            </Link>
+          </p>
         </div>
+      ))}
 
-        {renderSection('aboutMe', 'Who am I?', (
-          <div className="space-y-2">
-            <p>I'm a passionate developer with a love for creating elegant solutions to complex problems. Currently focused on fullstack/production development and exploring new technologies.</p>
-            <p>Check out my work on:
-              <Link
-                target="_blank"
-                className="ml-1 text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                to="https://github.com/cxrsedhappy"
-              >
-                GitHub
-              </Link>
-            </p>
-          </div>
-        ))}
-
-        {renderSection('skills', 'My Skills', (
-          <Terminal title={'toggle.sh'}>
-            <div>
-              <span className="prompt">{PC_HOST}@arch:~$</span>
-              <span className="command"> ls -la skills/</span>
+      {renderSection('skills', 'My Skills', (
+        <Terminal title={'toggle.sh'}>
+          <div>
+            <span className="prompt">{PC_HOST}@arch:~$</span>
+            <span className="command"> ls -la skills/</span>
+            <div className="mt-2">
+              <span className="output-line">total 5 directories, 12 files</span>
+              {["frontend", "backend", "devops", "tools", "other"].map((dir) =>
+                <span
+                  className="output-line">drwxr-xr-x 2 {ME} {new Date().toLocaleDateString()}
+                  <span className="highlight"> {dir}/</span>
+                </span>
+              )}
+            </div>
+            <div className="mt-3">
+              <span className="prompt">{ME}@arch:~$</span>
+              <span className="command"> cat skills/frontend/*</span>
               <div className="mt-2">
-                <span className="output-line">total 5 directories, 12 files</span>
-                {["frontend", "backend", "devops", "tools", "other"].map((dir) =>
-                  <span
-                    className="output-line">drwxr-xr-x 2 {ME} {new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}
-                    <span className="highlight"> {dir}/</span>
-                  </span>
+                <span className="output-line">React, TailwindCSS, JavaScript, HTML, CSS</span>
+              </div>
+            </div>
+            <div className="mt-3">
+              <span className="prompt">{ME}@arch:~$</span>
+              <span className="command"> cat skills/backend/*</span>
+              <div className="mt-2">
+                <span className="output-line">FastAPI, PostgreSQL, SQLAlchemy, REST API</span>
+              </div>
+            </div>
+            <div className="mt-3">
+              <span className="prompt">{ME}@arch:~$</span>
+              <span className="command"> ls -la skills/tools</span>
+              <div className="mt-2">
+                {["Git", "Docker", "Jenkins"].map((tool) =>
+                  <span className="output-line">-rwxr-xr-x 1 {ME} users 1.7K <span className="highlight">{tool}</span></span>
                 )}
               </div>
-              <div className="mt-3">
-                <span className="prompt">{ME}@arch:~$</span>
-                <span className="command"> cat skills/frontend/*</span>
-                <div className="mt-2">
-                  <span className="output-line">React, TailwindCSS, JavaScript, HTML, CSS</span>
-                </div>
-              </div>
-              <div className="mt-3">
-                <span className="prompt">{ME}@arch:~$</span>
-                <span className="command"> cat skills/backend/*</span>
-                <div className="mt-2">
-                  <span className="output-line">FastAPI, PostgreSQL, SQLAlchemy, REST API</span>
-                </div>
-              </div>
-              <div className="mt-3">
-                <span className="prompt">{ME}@arch:~$</span>
-                <span className="command"> ls -la skills/tools</span>
-                <div className="mt-2">
-                  {["Git", "Docker", "Jenkins"].map((tool) =>
-                    <span className="output-line">-rwxr-xr-x 1 {ME} users 1.7K <span className="arch-blue">{tool}</span></span>
-                  )}
-                </div>
-              </div>
-              <div className="mt-3">
-                <span className="prompt">{ME}@arch:~$</span>
-                <span className="command"> colorscript -r</span>
-                <div className="mt-2 flex">
-                  <div className="color-blocks">
-                    <div className="color-row">
-                      <div className="color-block bg-[#1a1b26]"></div>
-                      <div className="color-block bg-[#f7768e]"></div>
-                      <div className="color-block bg-[#9ece6a]"></div>
-                      <div className="color-block bg-[#e0af68]"></div>
-                    </div>
-                    <div className="color-row">
-                      <div className="color-block bg-[#7aa2f7]"></div>
-                      <div className="color-block bg-[#bb9af7]"></div>
-                      <div className="color-block bg-[#7dcfff]"></div>
-                      <div className="color-block bg-[#c0caf5]"></div>
-                    </div>
+            </div>
+            <div className="mt-3">
+              <span className="prompt">{ME}@arch:~$</span>
+              <span className="command"> colorscript -r</span>
+              <div className="mt-2 flex">
+                <div className="color-blocks">
+                  <div className="color-row">
+                    <div className="color-block bg-[#1a1b26]"></div>
+                    <div className="color-block bg-[#f7768e]"></div>
+                    <div className="color-block bg-[#9ece6a]"></div>
+                    <div className="color-block bg-[#e0af68]"></div>
                   </div>
-                  <div className="ml-4 color-labels">
-                    <span className="output-line">Tokyo Night</span>
-                    <span className="output-line text-sm">BLK RED GRN YLW</span>
-                    <span className="output-line text-sm">BLU MAG CYN WHT</span>
+                  <div className="color-row">
+                    <div className="color-block bg-[#7aa2f7]"></div>
+                    <div className="color-block bg-[#bb9af7]"></div>
+                    <div className="color-block bg-[#7dcfff]"></div>
+                    <div className="color-block bg-[#c0caf5]"></div>
                   </div>
                 </div>
+                <div className="ml-4 color-labels">
+                  <span className="output-line">Tokyo Night</span>
+                  <span className="output-line text-sm">BLK RED GRN YLW</span>
+                  <span className="output-line text-sm">BLU MAG CYN WHT</span>
+                </div>
               </div>
-            </div>
-          </Terminal>
-        ))}
-
-        {renderSection('projects', 'My Projects', (
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-medium text-blue-400">Personal Portfolio</h4>
-              <p className="text-sm text-gray-300">
-                A responsive <a href={'https://github.com/cxrsedhappy/portfolio'} target="_blank" className="text-blue-400 hover:underline" rel="noopener noreferrer">portfolio</a> website built with React and TailwindCSS.</p>
-            </div>
-            <div>
-              <h4 className="font-medium text-blue-400">CRM service</h4>
-              <p className="text-sm text-gray-300">A <Link to="/kali" className="text-blue-400 hover:underline">full-stack application</Link> for managing licenses using React, FastAPI and PostgreSQL.</p>
-            </div>
-            <div>
-              <h4 className="font-medium text-blue-400">Small project across IT</h4>
-              <p className="text-sm text-gray-300">Fullstack services, Deep Machine Learning, DevOps etc. Check them out on <a href="https://github.com/cxrsedhappy" target="_blank" className="text-blue-400 hover:underline" rel="noopener noreferrer">GitHub</a>. </p>
             </div>
           </div>
-        ))}
+        </Terminal>
+      ))}
 
-        {renderSection('computer', 'My Computer Setup', (
-          <Terminal title={'neofetch'}>
-            <div>
-              <div className="flex sm:flex-row flex-col mt-2">
-                <div className="hidden sm:block mr-4">
-                  <pre className="text-blue-500">
-                    {`      /\\      `}<br />
-                    {`     /  \\     `}<br />
-                    {`    /    \\    `}<br />
-                    {`   /\\____\\   `}<br />
-                    {`  /      \\    `}<br />
-                    {` /        \\   `}<br />
-                    {`/__________\\  `}<br />
-                    {`               `}<br />
-                    {`               `}<br />
-                  </pre>
-                </div>
-                <div>
-                  {terminalData.map((data, index) => (
-                    <div key={index} className="arch-info-row">
-                      <span className="arch-info-label">{Object.keys(data)[0]}:</span>
-                      <span className="output-line">{data[Object.keys(data)[0]]}</span>
-                    </div>
-                  ))}
-                  <div className="mt-2">
-                    <div className="color-blocks-big">
-                      <div className="color-row-big">
-                        <div className="color-block-big bg-[#1a1b26]"><span>0</span></div>
-                        <div className="color-block-big bg-[#f7768e]"><span>1</span></div>
-                        <div className="color-block-big bg-[#9ece6a]"><span>2</span></div>
-                        <div className="color-block-big bg-[#e0af68]"><span>3</span></div>
-                        <div className="color-block-big bg-[#7aa2f7]"><span>4</span></div>
-                        <div className="color-block-big bg-[#bb9af7]"><span>5</span></div>
-                        <div className="color-block-big bg-[#7dcfff]"><span>6</span></div>
-                        <div className="color-block-big bg-[#c0Mull]"><span>7</span></div>
-                      </div>
+      {renderSection('projects', 'My Projects', (
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-medium text-blue-400">Personal Portfolio</h4>
+            <p className="text-sm text-gray-300">
+              A responsive <a href={'https://github.com/cxrsedhappy/portfolio'} target="_blank" className="text-blue-400 hover:underline" rel="noopener noreferrer">portfolio</a> website built with React and TailwindCSS.</p>
+          </div>
+          <div>
+            <h4 className="font-medium text-blue-400">CRM service</h4>
+            <p className="text-sm text-gray-300">A <Link to="/kali" className="text-blue-400 hover:underline">full-stack application</Link> for managing licenses using React, FastAPI and PostgreSQL.</p>
+          </div>
+          <div>
+            <h4 className="font-medium text-blue-400">Small project across IT</h4>
+            <p className="text-sm text-gray-300">Fullstack services, Deep Machine Learning, DevOps etc. Check them out on <a href="https://github.com/cxrsedhappy" target="_blank" className="text-blue-400 hover:underline" rel="noopener noreferrer">GitHub</a>. </p>
+          </div>
+        </div>
+      ))}
+
+      {renderSection('computer', 'My Computer Setup', (
+        <Terminal title={'neofetch'}>
+          <div>
+            <div className="flex sm:flex-row flex-col mt-2">
+              <AsciiRenderer asciiText={asciiArt} className="mr-4" />
+              <div>
+                {terminalData.map((data, index) => (
+                  <div key={index} className="arch-info-row">
+                    <span className="arch-info-label">{Object.keys(data)[0]}:</span>
+                    <span className="output-line">{data[Object.keys(data)[0]]}</span>
+                  </div>
+                ))}
+                <div className="mt-2">
+                  <div className="color-blocks-big">
+                    <div className="color-row-big">
+                      <div className="color-block-big bg-[#1a1b26]"><span>0</span></div>
+                      <div className="color-block-big bg-[#f7768e]"><span>1</span></div>
+                      <div className="color-block-big bg-[#9ece6a]"><span>2</span></div>
+                      <div className="color-block-big bg-[#e0af68]"><span>3</span></div>
+                      <div className="color-block-big bg-[#7aa2f7]"><span>4</span></div>
+                      <div className="color-block-big bg-[#bb9af7]"><span>5</span></div>
+                      <div className="color-block-big bg-[#7dcfff]"><span>6</span></div>
+                      <div className="color-block-big bg-[#c0Mull]"><span>7</span></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-3">
-                <span className="prompt">{ME}@arch:~$</span>
-                <span className="command highlight"> I use Arch btw</span>
-              </div>
             </div>
-          </Terminal>
-        ))}
-
-        {renderSection('hobbies', 'My Hobbies & Interests', (
-          <div className="space-y-2">
-            <p>🚶 Gym - Exploring my possibilities</p>
-            <p>📚 Reading - Business and technical books</p>
-            <p>🎧 Programming - Fullstack, DeepML, DevOps, Cheats. I love everything</p>
-            <p>🧩 Tactical games - Chess, Go are my passion</p>
-            <p>🎮 Gaming - Competitive and team oriented games</p>
+            <div className="mt-3">
+              <span className="prompt">{ME}@arch:~$</span>
+              <span className="text-[#e4e4dd]"> I use Arch btw</span>
+            </div>
           </div>
-        ))}
+        </Terminal>
+      ))}
 
-        <div className="flex gap-6 justify-center py-7">
+      {renderSection('hobbies', 'My Hobbies & Interests', (
+        <div className="space-y-2">
+          <p>🚶 Gym - Exploring my possibilities</p>
+          <p>📚 Reading - Business and technical books</p>
+          <p>🎧 Programming - Fullstack, DeepML, DevOps, Cheats. I love everything</p>
+          <p>🧩 Tactical games - Chess, Go are my passion</p>
+          <p>🎮 Gaming - Competitive and team oriented games</p>
+        </div>
+      ))}
+
+      <div className="flex justify-center py-7">
           <Link target="_blank" to="https://t.me/daixe" rel="noopener noreferrer">
             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -264,7 +274,7 @@ export default function Main() {
             </svg>
           </Link>
         </div>
-      </div>
+
     </main>
   );
 }
