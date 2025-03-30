@@ -43,7 +43,12 @@ export default function Blog() {
       date: "2025-03-20",
       summary: "Markdown post for testing",
       content: `
-      A paragraph with *emphasis* and **strong importance**.
+      
+      # Heading 1
+      
+      ## Heading 2
+      
+      ### Heading 3
       
 **strong importance**
 
