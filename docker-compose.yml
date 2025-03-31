@@ -22,16 +22,6 @@ services:
       - app-network
     restart: always
 
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --email staspashkov2003@mail.com --agree-tos --no-eff-email -d spashkov.ru
-    depends_on:
-      - frontend
-
 networks:
   app-network:
     driver: bridge
