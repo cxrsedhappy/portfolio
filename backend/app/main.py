@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from models import ContactModel
+from .models import ContactModel
 
 app = FastAPI(title='Stanislaw API', summary='', description='', version='0.0.1')
 
